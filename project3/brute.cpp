@@ -59,8 +59,7 @@ void initialize(int argc, char* argv[]) {
 int main(int argc, char *argv[]){
 	
 	initialize(argc, argv);
-	Brute *b = new Brute(me);
-	b->decrypt(table_filename);
+
 	// your code here
 	
 	return 0;
