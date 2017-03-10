@@ -23,6 +23,7 @@ Brute::Brute(const std::string& filename) {
 }
 
 void Brute::decrypt(const std::string& encrypted){
+
 	// your code here
 
 }
