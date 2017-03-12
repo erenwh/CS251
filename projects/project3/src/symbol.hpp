@@ -9,6 +9,8 @@
 #include "key.hpp"
 
 class Symbol {
+private:
+    std::vector<Key> T;
 public:
 	Symbol(const std::string&);
 	void decrypt(const std::string&);

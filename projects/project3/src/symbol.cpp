@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <map>
 
 #include "key.hpp"
 #include "symbol.hpp"
@@ -10,6 +11,7 @@ std::string me;
 std::string encrypted;
 std::string table_filename;
 bool verbose = false;
+
 
 Symbol::Symbol(const std::string& filename) {
 	T.resize(N);
