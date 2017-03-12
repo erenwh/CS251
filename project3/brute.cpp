@@ -10,6 +10,7 @@ std::string me;
 std::string encrypted;
 std::string table_filename;
 bool verbose = false;
+std::vector<std::string> decrypted;
 
 Brute::Brute(const std::string& filename) {
 	T.resize(N);
@@ -23,8 +24,36 @@ Brute::Brute(const std::string& filename) {
 }
 
 void Brute::decrypt(const std::string& encrypted){
+    // Use a brute force algorithm to decrypt the encrypted key_to_decrypt.
 
-	// your code here
+	// Because the encrypted password is only 5-char in length, we could brute-force and try to try every possibility
+	// from the table 32*32*32*32*32 = 33 mill
+
+	Key targetKey((encrypted));		// encrypted key
+	Key ssum;						// decrypted key
+	for (int i = 0; i < 32; ++i) {
+		for (int j = 0; j < 32; ++j) {
+			for (int k = 0; k < 32; ++k) {
+				for (int l = 0; l < 32; ++l) {
+					for (int m = 0; m < 32; ++m) {
+						std::string temp;
+						temp.push_back(ALPHABET[i]);
+						temp.push_back(ALPHABET[j]);
+						temp.push_back(ALPHABET[k]);
+						temp.push_back(ALPHABET[l]);
+						temp.push_back(ALPHABET[m]);	// construct key
+						//std::cout << temp << std::endl;
+						Key passkey((temp));
+						ssum = passkey.subset_sum(T, verbose);
+						if (ssum == targetKey) {
+							decrypted.push_back(temp);
+						}
+					}
+				}
+			}
+		}
+	}
+
 
 }
 
@@ -42,7 +71,7 @@ void usage(const std::string& error_msg="") {
 	exit(0);
 }
 
-void initialize(int argc, char* argv[]) {
+void initialize(int argc, char* argv[]) { // Initialize the class with the table contained in table_filename.
 	me = argv[0];
 	if (argc < 3) usage("Missing arguments");
 	encrypted = argv[1];
@@ -53,14 +82,26 @@ void initialize(int argc, char* argv[]) {
 		else if (arg == "-v" || arg == "--verbose") verbose = true;
 		else usage("Unrecognized argument: " + arg);
 	}
+
 }
 
 
 int main(int argc, char *argv[]){
-	
+    //Read in an encrypted password and the name of a file containing the table to b used
+    //and decrypt it using the brute force algorithm
+
 	initialize(argc, argv);
 
-	// your code here
-	
+	Brute *b = new Brute(table_filename);
+
+	// try to decrypt
+	b->decrypt(encrypted);
+
+	// print result
+	for (int i = 0; i < decrypted.size(); ++i) {
+		std::cout << decrypted[i] << '\n';
+	}
+
+
 	return 0;
 }
