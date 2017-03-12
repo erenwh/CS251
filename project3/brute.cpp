@@ -92,10 +92,10 @@ int main(int argc, char *argv[]){
 
 	initialize(argc, argv);
 
-	Brute *b = new Brute(table_filename);
+	Brute b(table_filename);
 
 	// try to decrypt
-	b->decrypt(encrypted);
+	b.decrypt(encrypted);
 
 	// print result
 	for (int i = 0; i < decrypted.size(); ++i) {
