@@ -1,0 +1,11 @@
+javac -classpath .:stdlib.jar Percolation.java
+java -classpath .:stdlib.jar Percolation < DemoYes.txt
+
+javac -classpath .:stdlib.jar PercolationVisualizer.java
+java -classpath .:stdlib.jar PercolationVisualizer < DemoVisYes.txt
+
+javac -classpath .:stdlib.jar VisualizeFrames.java
+java -classpath .:stdlib.jar VisualizeFrames
+
+javac -classpath .:stdlib.jar PercolationStats.java
+java -classpath .:stdlib.jar PercolationStats 20 50 fast
