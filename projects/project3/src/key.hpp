@@ -183,6 +183,7 @@ Key Key::subset_sum(const std::vector<Key>& T, bool verbose) {
     return sum;  
 }
 
+
 inline void Key::show() const {
 	std::for_each(m_digit.begin(), m_digit.end(), [](const char& c)
 	{
