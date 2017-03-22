@@ -14,7 +14,7 @@ private:
 public:
 	Symbol(const std::string&);
 	void decrypt(const std::string&);
-	void getSubsetSum(char ***array, int length);
+	//void getSubsetSum(char ***array, int length);
 };
 
 #endif
