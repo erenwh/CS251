@@ -30,7 +30,7 @@ Symbol::Symbol(const std::string &filename) {
     // insert your code here
 }
 
-void subsetsum(std::string s[], int length) {
+void subsetsum(std::vector s, int length) {
     int passwordCount = 0;
     int index[length];
 
@@ -38,7 +38,7 @@ void subsetsum(std::string s[], int length) {
         std::string tempPassword;
         for (int i = 0; i < length; ++i) {
             tempPassword.at(i) = ALPHABET[index[i]];
-            s[passwordCount] = tempPassword;
+            s.at(passwordCount) = tempPassword;
         }
         for (int i = length - 1;; i--) {
             if (i < 0)
@@ -59,8 +59,8 @@ void Symbol::decrypt(const std::string &encrypted) {
     // take a subset S of the table T
     int s1 = C / 2;
     int s2 = C - C/2;
-    std::string s1Array[s1];
-    std::string s2Array[s2];
+    std::vector<std::string> s1Array;
+    std::vector<std::string> s2Array;
     // compute all possible subset sums that can be made with
     /*for (int i = 0; i < s1passw; ++i) {
         // compute subset sums
@@ -82,7 +82,19 @@ void Symbol::decrypt(const std::string &encrypted) {
     s1t.join();
     s2t.join();
 
+    std::map<Key, char *> st;
 
+    for(int i = 0; i < s1; i++) {
+        for(int j = 0; j < s2; j++) {
+            char *password = (char *) malloc((C + 1)*sizeof(char));
+            strcat(password, s1Array[i]);
+            strcat(password, s2Array[j]);
+            Key encrypted_key = Key(password);
+            const Key final_key = encrypted_key.subset_sum(T);
+            st[final_key] = password;
+        }
+    }
+/*
     Key ssum;
     std::string password;
     // then use that symbol table to check all those possibilities with ideally one but at most a few lookups
@@ -92,7 +104,7 @@ void Symbol::decrypt(const std::string &encrypted) {
             // encrypt temp password
             // compute the subset sum using table T
         }
-    }
+    }*/
 }
 
 
