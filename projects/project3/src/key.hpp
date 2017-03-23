@@ -116,6 +116,8 @@ public:
 	// Add subset of the integers T[i] indexed by the bits of k 
 	// and return subset sum. Do sum mod 2^N. 
     Key subset_sum(const std::vector<Key>&, bool verbose=false);
+
+    bool compare(Key a, Key b);
 };
 
 inline int Key::bit(int i) const {	
@@ -181,6 +183,10 @@ Key Key::subset_sum(const std::vector<Key>& T, bool verbose) {
 		}
 	}
     return sum;  
+}
+bool Key::compare(Key a, Key b){
+
+    return a < b;
 }
 
 

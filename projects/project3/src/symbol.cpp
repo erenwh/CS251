@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <unordered_map>
 #include <cmath>
 #include <thread>
 #include <cstring>
@@ -30,20 +31,35 @@ Symbol::Symbol(const std::string &filename) {
 }
 
 
+
 void Symbol::decrypt(const std::string &encrypted) {
-    // take a subset S of the table T
+
+
+    /*// take a subset S of the table T
     int s1 = C / 2;
     int s2 = C - C/2;
-    std::vector s1passw<std::string>[s1];
-    std::vector s2passw<std::string>[s2];
+    std::vector s1passw<std::string>;
+    std::vector s2passw<std::string>;
+
     // compute all possible subset sums that can be made with
-    for (int i = 0; i < s1passw->size(); ++i) {
+    for (int i = 0; i < s1passw; ++i) {
         // compute subset sums
+        int mask = i;
+        std::string key;
+        int index = 0;
+        for (int j = 0; j < s1; ++j) {
+            if (mask & 1)
+        }
         // put those values into a symbol table
+        s1passw.push_back(sss);
     }
-    for (int i = 0; i < s2passw->size(); ++i) {
+    for (int i = 0; i < s2passw; ++i) {
         // compute subset sums
+        std::string temp;
+        Key passkey(T[i]);
+        Key sss = passkey.subset_sum(T,verbose);
         // put those values into a symbol table
+        s1passw.push_back(sss);
     }
 
     std::map<Key, std::string, std::less> st;
@@ -56,7 +72,7 @@ void Symbol::decrypt(const std::string &encrypted) {
             // encrypt temp password
             // compute the subset sum using table T
         }
-    }
+    }*/
 }
 
 
@@ -90,8 +106,10 @@ void initialize(int argc, char *argv[]) {
 
 int main(int argc, char *argv[]) {
     initialize(argc, argv);
-    // TODO
 
+    Symbol s(table_filename);
+
+    s.decrypt(encrypted);
 
 
     return 0;
