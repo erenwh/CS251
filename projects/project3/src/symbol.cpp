@@ -32,8 +32,8 @@ Symbol::Symbol(const std::string &filename) {
 
 void Symbol::decrypt(const std::string &encrypted) {
     // take a subset S of the table T
-    int s1 = (int) pow(R, C / 2);
-    int s2 = (int) pow(R, C - C/2);
+    int s1 = C / 2;
+    int s2 = C - C/2;
     std::vector s1passw<std::string>[s1];
     std::vector s2passw<std::string>[s2];
     // compute all possible subset sums that can be made with
