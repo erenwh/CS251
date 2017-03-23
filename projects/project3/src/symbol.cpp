@@ -30,28 +30,44 @@ Symbol::Symbol(const std::string &filename) {
     // insert your code here
 }
 
+void subsetsum(std::string s[], int length) {
+    int passwordCount = 0;
+    int index[length];
 
+    while(true) {
+        std::string tempPassword;
+        for (int i = 0; i < length; ++i) {
+            tempPassword.at(i) = ALPHABET[index[i]];
+            s[passwordCount] = tempPassword;
+        }
+        for (int i = length - 1;; i--) {
+            if (i < 0)
+                goto end;
+            index[i]++;
+            if (index[i] == R)
+                index[i] = 0;
+            else
+                break;
+        }
+        passwordCount++;
+    }
+    end:
+    free(index);
+}
 
 void Symbol::decrypt(const std::string &encrypted) {
-
-
-    /*// take a subset S of the table T
+    // take a subset S of the table T
     int s1 = C / 2;
     int s2 = C - C/2;
-    std::vector s1passw<std::string>;
-    std::vector s2passw<std::string>;
-
+    std::string s1Array[s1];
+    std::string s2Array[s2];
     // compute all possible subset sums that can be made with
-    for (int i = 0; i < s1passw; ++i) {
+    /*for (int i = 0; i < s1passw; ++i) {
         // compute subset sums
-        int mask = i;
-        std::string key;
-        int index = 0;
-        for (int j = 0; j < s1; ++j) {
-            if (mask & 1)
-        }
+
         // put those values into a symbol table
-        s1passw.push_back(sss);
+
+
     }
     for (int i = 0; i < s2passw; ++i) {
         // compute subset sums
@@ -60,9 +76,13 @@ void Symbol::decrypt(const std::string &encrypted) {
         Key sss = passkey.subset_sum(T,verbose);
         // put those values into a symbol table
         s1passw.push_back(sss);
-    }
+    }*/
+    std::thread s1t(subsetsum, &s1Array, s1);
+    std::thread s2t(subsetsum, &s2Array, s2);
+    s1t.join();
+    s2t.join();
 
-    std::map<Key, std::string, std::less> st;
+
     Key ssum;
     std::string password;
     // then use that symbol table to check all those possibilities with ideally one but at most a few lookups
@@ -72,7 +92,7 @@ void Symbol::decrypt(const std::string &encrypted) {
             // encrypt temp password
             // compute the subset sum using table T
         }
-    }*/
+    }
 }
 
 

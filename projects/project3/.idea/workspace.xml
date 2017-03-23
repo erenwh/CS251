@@ -13,9 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="84c9904f-e420-4c20-b9b3-5325eb86ca17" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/key.hpp" afterPath="$PROJECT_DIR$/src/key.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/symbol.cpp" afterPath="$PROJECT_DIR$/src/symbol.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/symbol.hpp" afterPath="$PROJECT_DIR$/src/symbol.hpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +34,8 @@
             <file leaf-file-name="brute.cpp" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/brute.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-291">
-                    <caret line="46" column="50" lean-forward="false" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
+                  <state relative-caret-position="950">
+                    <caret line="88" column="33" lean-forward="true" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
                     <folding>
                       <element signature="e#0#18#0" expanded="true" />
                     </folding>
@@ -56,7 +54,7 @@
       <file leaf-file-name="key.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/key.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-257">
+            <state relative-caret-position="1802">
               <caret line="121" column="0" lean-forward="true" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
               <folding>
                 <element signature="e#680#810#0" expanded="true" />
@@ -65,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="symbol.hpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="symbol.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/symbol.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -77,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="symbol.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="symbol.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/symbol.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="271">
+              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -125,8 +123,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/rand8.txt" />
         <option value="$PROJECT_DIR$/src/key.hpp" />
-        <option value="$PROJECT_DIR$/src/symbol.cpp" />
         <option value="$PROJECT_DIR$/src/symbol.hpp" />
+        <option value="$PROJECT_DIR$/src/symbol.cpp" />
       </list>
     </option>
   </component>
@@ -388,7 +386,7 @@
       <workItem from="1489313993897" duration="37000" />
       <workItem from="1489314048499" duration="8850000" />
       <workItem from="1490211187881" duration="6962000" />
-      <workItem from="1490249531753" duration="3748000" />
+      <workItem from="1490249531753" duration="5239000" />
     </task>
     <task id="LOCAL-00001" summary="Erase some of Symbol, wrong direction&#10;">
       <created>1490213918376</created>
@@ -404,22 +402,29 @@
       <option name="project" value="LOCAL" />
       <updated>1490249666325</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="adding compare function">
+      <created>1490253310260</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1490253310260</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19611000" />
+    <option name="totallyTimeSpent" value="21102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1684" y="22" width="1242" height="968" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1469501" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27828056" sideWeight="0.50369686" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3173516" sideWeight="0.49630314" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3173516" sideWeight="0.49630314" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -481,7 +486,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Erase some of Symbol, wrong direction&#10;" />
     <MESSAGE value="fix some mistakes: size of subset S" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some mistakes: size of subset S" />
+    <MESSAGE value="adding compare function" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding compare function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -638,10 +644,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <element signature="e#43#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/brute.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-291">
-          <caret line="46" column="50" lean-forward="false" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
+        <state relative-caret-position="950">
+          <caret line="88" column="33" lean-forward="true" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -650,7 +666,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/key.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-257">
+        <state relative-caret-position="1802">
           <caret line="121" column="0" lean-forward="true" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
           <folding>
             <element signature="e#680#810#0" expanded="true" />
@@ -660,20 +676,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/symbol.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="271">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/symbol.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-          <folding>
-            <element signature="e#43#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
