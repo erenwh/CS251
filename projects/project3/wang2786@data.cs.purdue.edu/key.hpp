@@ -17,13 +17,6 @@
 static constexpr int B=5;  // number of bits per character
 static constexpr int R=32; // size of alphabet (2^B)
 
-#ifdef USE_4_CHARS
-
-static constexpr int C=4;  // number of characters per word
-static constexpr int N=20; // number of bits per word
-#define C_IS_SET
-
-#endif
 #ifdef USE_6_CHARS
 
 static constexpr int C=6;  // number of characters per word
@@ -64,13 +57,6 @@ static constexpr int N=50; // number of bits per word
 
 #endif
 
-#ifdef USE_12_CHARS
-
-static constexpr int C=12;  // number of characters per word
-static constexpr int N=60; // number of bits per word
-#define C_IS_SET
-
-#endif
 #ifndef C_IS_SET
 
 static constexpr int C=5;   // number of characters per word

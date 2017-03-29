@@ -5,7 +5,6 @@
 
 #include "key.hpp"
 #include "brute.hpp"
-#include "timer.hpp"
 
 std::string me;
 std::string encrypted;
@@ -30,7 +29,7 @@ void Brute::decrypt(const std::string& encrypted){
 	// Because the encrypted password is only 5-char in length, we could brute-force and try to try every possibility
 	// from the table 32*32*32*32*32 = 33 mill
 
-	/*Key targetKey((encrypted));		// encrypted key
+	Key targetKey((encrypted));		// encrypted key
 	Key ssum;						// decrypted key
 	for (int i = 0; i < 32; ++i) {
 		for (int j = 0; j < 32; ++j) {
@@ -53,30 +52,8 @@ void Brute::decrypt(const std::string& encrypted){
 				}
 			}
 		}
-	}*/
-    // modified
+	}
 
-    CPU_timer t;
-    t.tic();
-    // try all possible subsets of T
-    Key candidate;         // a password candidate
-    Key encry = Key(encrypted);                 // the encrypted password
-    Key candenc;                   // the encrypted password candidate
-    Key zero;              // the all zero key
-    do
-    {
-        candenc = candidate.subset_sum(T,verbose);
-        if (candenc == encrypted)
-            std::cout << candidate << std::endl;
-        ++candidate;
-    } while (candidate != zero);
-
-    t.toc();
-    double elapsed_secs = t.elapsed();
-
-    std::cout << "Decryption took "
-              << elapsed_secs
-              << " Mill.seconds." << std::endl;
 
 }
 

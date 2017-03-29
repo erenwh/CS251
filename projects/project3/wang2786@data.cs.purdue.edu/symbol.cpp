@@ -9,11 +9,9 @@
 #include <cstring>
 #include <set>
 #include <chrono>
-#include <ctime>
 
 #include "key.hpp"
 #include "symbol.hpp"
-#include "timer.hpp"
 
 std::string me;
 std::string encrypted;
@@ -69,9 +67,7 @@ void Symbol::decrypt(const std::string &encrypted) {
     // From here the assignment directives to choose a data structure to efficiently store the second-half-sum and
     // to choose an efficient fraction of N to place in the second-half-sum begins.
 
-    CPU_timer t;
-    t.tic();
-
+    auto begin = std::chrono::high_resolution_clock::now();
     std::unordered_map < Key, std::vector< Key >, key_hash > first_h_keys;
     std::vector< Key > temp_keys;
     Key encryp = Key(encrypted);
@@ -119,12 +115,11 @@ void Symbol::decrypt(const std::string &encrypted) {
     } while (counter != zero);
 
 
-    t.toc();
-    double elapsed_secs = t.elapsed();
 
+    auto end = std::chrono::high_resolution_clock::now();
     std::cout << "Decryption took "
-         << elapsed_secs
-         << " Mill.seconds." << std::endl;
+         << std::chrono::duration_cast<std::chrono::seconds>(end - begin).count()
+         << " seconds." << std::endl;
 }
 
 
