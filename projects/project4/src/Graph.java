@@ -1,88 +1,106 @@
 /******************************************************************************
- *  Compilation:  javac Digraph.java
- *  Execution:    java Digraph filename.txt
- *  Dependencies: Bag.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
- *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
- *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt  
+ *  Compilation:  javac Graph.java        
+ *  Execution:    java Graph input.txt
+ *  Dependencies: Bag.java Stack.java In.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt
  *
- *  A graph, implemented using an array of lists.
- *  Parallel edges and self-loops are permitted.
+ *  A graph, implemented using an array of sets.
+ *  Parallel edges and self-loops allowed.
  *
- *  % java Digraph tinyDG.txt
- *  13 vertices, 22 edges
- *  0: 5 1 
- *  1: 
- *  2: 0 3 
- *  3: 5 2 
- *  4: 3 2 
- *  5: 4 
- *  6: 9 4 8 0 
- *  7: 6 9
- *  8: 6 
- *  9: 11 10 
- *  10: 12 
- *  11: 4 12 
- *  12: 9 
+ *  % java Graph tinyG.txt
+ *  13 vertices, 13 edges 
+ *  0: 6 2 1 5 
+ *  1: 0 
+ *  2: 0 
+ *  3: 5 4 
+ *  4: 5 6 3 
+ *  5: 3 4 0 
+ *  6: 0 4 
+ *  7: 8 
+ *  8: 7 
+ *  9: 11 10 12 
+ *  10: 9 
+ *  11: 9 12 
+ *  12: 11 9 
+ *
+ *  % java Graph mediumG.txt
+ *  250 vertices, 1273 edges 
+ *  0: 225 222 211 209 204 202 191 176 163 160 149 114 97 80 68 59 58 49 44 24 15 
+ *  1: 220 203 200 194 189 164 150 130 107 72 
+ *  2: 141 110 108 86 79 51 42 18 14 
+ *  ...
  *  
  ******************************************************************************/
 
+
 import java.util.NoSuchElementException;
 
-/**
- *  author Robert Sedgewick
- *  author Kevin Wayne
- */
 @SuppressWarnings({"unchecked", "deprecation"})
-public class Digraph {
+
+public class Graph {
     private static final String NEWLINE = System.getProperty("line.separator");
 
-    private final int V;           // number of vertices in this digraph
-    private int E;                 // number of edges in this digraph
-    private Bag<Integer>[] adj;    // adj[v] = adjacency list for vertex v
-    private int[] indegree;        // indegree[v] = indegree of vertex v
+    private final int V;
+    private int E;
+    private Bag<Integer>[] adj;
     
-
-    public Digraph(int V) {
-        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+    /**
+     * Initializes an empty graph with {@code V} vertices and 0 edges.
+     * param V the number of vertices
+     *
+     * @param  V number of vertices
+     * @throws IllegalArgumentException if {@code V < 0}
+     */
+    public Graph(int V) {
+        if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
         this.V = V;
         this.E = 0;
-        indegree = new int[V];
         adj = (Bag<Integer>[]) new Bag[V];
         for (int v = 0; v < V; v++) {
             adj[v] = new Bag<Integer>();
         }
     }
 
-    
-    public Digraph(In in) {
+    /**  
+     * @param  in the input stream
+     * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
+     * @throws IllegalArgumentException if the number of vertices or edges is negative
+     * @throws IllegalArgumentException if the input stream is in the wrong format
+     */
+    public Graph(In in) {
         try {
             this.V = in.readInt();
-            if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be nonnegative");
-            indegree = new int[V];
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
             adj = (Bag<Integer>[]) new Bag[V];
             for (int v = 0; v < V; v++) {
                 adj[v] = new Bag<Integer>();
             }
             int E = in.readInt();
-            if (E < 0) throw new IllegalArgumentException("number of edges in a Digraph must be nonnegative");
+            if (E < 0) throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
+                validateVertex(v);
+                validateVertex(w);
                 addEdge(v, w); 
             }
         }
         catch (NoSuchElementException e) {
-            throw new IllegalArgumentException("invalid input format in Digraph constructor", e);
+            throw new IllegalArgumentException("invalid input format in Graph constructor", e);
         }
     }
 
-    
-    public Digraph(Digraph G) {
+
+    /**
+     * Initializes a new graph that is a deep copy of {@code G}.
+     *
+     * @param  G the graph to copy
+     */
+    public Graph(Graph G) {
         this(G.V());
         this.E = G.E();
-        for (int v = 0; v < V; v++)
-            this.indegree[v] = G.indegree(v);
         for (int v = 0; v < G.V(); v++) {
             // reverse so that adjacency list is in same order as original
             Stack<Integer> reverse = new Stack<Integer>();
@@ -94,17 +112,19 @@ public class Digraph {
             }
         }
     }
-        
-   
+
+    /**
+     * Returns the number of vertices in this graph.
+     *
+     * @return the number of vertices in this graph
+     */
     public int V() {
         return V;
     }
 
-   
     public int E() {
         return E;
     }
-
 
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
@@ -112,62 +132,50 @@ public class Digraph {
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
-   
+
     public void addEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        adj[v].add(w);
-        indegree[w]++;
         E++;
+        adj[v].add(w);
+        adj[w].add(v);
     }
 
-    
+
+
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
         return adj[v];
     }
 
-   
-    public int outdegree(int v) {
+    public int degree(int v) {
         validateVertex(v);
         return adj[v].size();
     }
 
-    
-    public int indegree(int v) {
-        validateVertex(v);
-        return indegree[v];
-    }
 
-    
-    public Digraph reverse() {
-        Digraph reverse = new Digraph(V);
-        for (int v = 0; v < V; v++) {
-            for (int w : adj(v)) {
-                reverse.addEdge(w, v);
-            }
-        }
-        return reverse;
-    }
-
-   
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append(V + " vertices, " + E + " edges " + NEWLINE);
         for (int v = 0; v < V; v++) {
-            s.append(String.format("%d: ", v));
+            s.append(v + ": ");
             for (int w : adj[v]) {
-                s.append(String.format("%d ", w));
+                s.append(w + " ");
             }
             s.append(NEWLINE);
         }
         return s.toString();
     }
 
-   
+
+    /**
+     * Unit tests the {@code Graph} data type.
+     *
+     * @param args the command-line arguments
+     */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
+        Graph G = new Graph(in);
         StdOut.println(G);
     }
 
