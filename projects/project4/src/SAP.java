@@ -62,15 +62,16 @@ public class SAP {
         In test = new In(args[1]);
 
         Digraph d = new Digraph(in);
-        if (d == null) {
-            System.out.println("sap = -1, ancestor = -1");
-            return;
-        }
         SAP s = new SAP(d);
+
 
         while (!test.isEmpty()) {
             int v = test.readInt();
             int w = test.readInt();
+            if (s.length(v,w) == -1) {
+                System.out.println("sap = -1, ancestor = -1\n");
+                return;
+            }
             System.out.printf("sap = %d, ancestor = %d\n", s.length(v, w), s.ancestor(v, w));
         }
     }

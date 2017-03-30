@@ -1,9 +1,11 @@
 <component name="libraryTable">
   <library name="stdlib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/projects/project1/src/stdlib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/projects/project4/src/stdlib.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/projects/project4/src/stdlib.jar!/" />
+    </SOURCES>
   </library>
 </component>
