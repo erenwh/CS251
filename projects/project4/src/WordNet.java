@@ -22,7 +22,7 @@ public final class WordNet {
 
         // get synsets
         In synIn = new In(synsets);
-        int counter = 1;
+        int counter = 1;//store the number of n;
 
         //45,AND_circuit AND_gate,a circuit in a computer that fires only when all of its inputs fire
         while (!synIn.isEmpty()) {

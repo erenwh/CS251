@@ -1,4 +1,4 @@
-import javafx.util.Pair;
+//import javafx.util.Pair;
 
 import java.util.NoSuchElementException;
 
@@ -71,7 +71,7 @@ public class SAP {
             int v = test.readInt();
             int w = test.readInt();
             if (s.length(v,w) == -1) {
-                System.out.println("sap = -1, ancestor = -1\n");
+                System.out.println("sap = -1, ancestor = -1");
                 return;
             }
             System.out.printf("sap = %d, ancestor = %d\n", s.length(v, w), s.ancestor(v, w));
